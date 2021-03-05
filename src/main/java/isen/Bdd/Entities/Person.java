@@ -15,7 +15,6 @@ public class Person {
 	}
 
 	public Person(Integer idperson, String lastname, String firstname, String nickname, String phone_number, String adress, String email_adress, String birth_date) {
-		super();
 		this.idperson = idperson;
 		this.lastname = lastname;
 		this.firstname = firstname;
