@@ -1,4 +1,5 @@
 package isen.Bdd.Entities;
+import java.time.LocalDate;
 
 public class Person {
 	private Integer idperson;
@@ -8,13 +9,13 @@ public class Person {
 	private String phone_number;
 	private String adress;
 	private String email_adress;
-	private String birth_date;
+	private LocalDate birth_date;
 	
 	
 	public Person() {
 	}
 
-	public Person(Integer idperson, String lastname, String firstname, String nickname, String phone_number, String adress, String email_adress, String birth_date) {
+	public Person(Integer idperson, String lastname, String firstname, String nickname, String phone_number, String adress, String email_adress, LocalDate birth_date) {
 		super();
 		this.idperson = idperson;
 		this.lastname = lastname;
@@ -82,11 +83,11 @@ public class Person {
 		this.email_adress = email_adress;
 	}
 
-	public String getBirth_date() {
+	public LocalDate getBirth_date() {
 		return birth_date;
 	}
 
-	public void setBirth_date(String birth_date) {
+	public void setBirth_date(LocalDate birth_date) {
 		this.birth_date = birth_date;
 	}
 

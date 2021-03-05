@@ -2,6 +2,7 @@ package isen.Bdd.Daos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,7 +21,7 @@ public class PersonDao {
 				String sqlQuery="SELECT * FROM person";
 				try (ResultSet resultSet = statement.executeQuery(sqlQuery);){
 					while( resultSet.next()) {
-						Person person = new Person(resultSet.getInt("idperson"), resultSet.getString("lastname"), resultSet.getString("firstname"), resultSet.getString("nickname"), resultSet.getString("phone_number"), resultSet.getString("adress"), resultSet.getString("email_adress"), resultSet.getString("birth_date"));
+						Person person = new Person(resultSet.getInt("idperson"), resultSet.getString("lastname"), resultSet.getString("firstname"), resultSet.getString("nickname"), resultSet.getString("phone_number"), resultSet.getString("adress"), resultSet.getString("email_adress"), resultSet.getDate("birth_date").toLocalDate());
 						listofperson.add(person);
 						}
 					}
