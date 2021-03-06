@@ -11,11 +11,8 @@ public class Person {
 	private String email_adress;
 	private LocalDate birth_date;
 	
-	
-	public Person() {
-	}
 
-	public Person(Integer idperson, String lastname, String firstname, String nickname, String phone_number, String adress, String email_adress, String birth_date) {
+	public Person(Integer idperson, String lastname, String firstname, String nickname, String phone_number, String adress, String email_adress, LocalDate birth_date) {
 		this.idperson = idperson;
 		this.lastname = lastname;
 		this.firstname = firstname;
@@ -25,6 +22,8 @@ public class Person {
 		this.email_adress = email_adress;
 		this.birth_date = birth_date;
 	}
+
+	
 
 	public Integer getIdperson() {
 		return idperson;

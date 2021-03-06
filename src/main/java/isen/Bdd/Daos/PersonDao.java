@@ -51,7 +51,7 @@ public class PersonDao {
 				statement.setString(4, addedPerson.getPhone_number());
 				statement.setString(5, addedPerson.getAdress());
 				statement.setString(6, addedPerson.getEmail_adress());
-				statement.setString(7, addedPerson.getBirth_date());
+				statement.setDate(7, Date.valueOf(addedPerson.getBirth_date()));
 				statement.close();
 			}
 			connection.close();
