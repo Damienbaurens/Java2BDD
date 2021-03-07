@@ -18,33 +18,33 @@ public class PersonDao {
 	DataSource dataSource = DataSourceFactory.getDataSource();
 	
 	public List<Person> listPerson() {
-		List<Person> listofperson= new ArrayList<>();
+		List<Person> listOfPerson= new ArrayList<>();
 		try(Connection connection = dataSource.getConnection()){
 			try (Statement statement = connection.createStatement()){
-				String sqlQuery="SELECT * FROM person";
-				try (ResultSet resultSet = statement.executeQuery(sqlQuery);){
-					while( resultSet.next()) {
-						Person person = new Person(resultSet.getInt("idperson"), resultSet.getString("lastname"), resultSet.getString("firstname"), resultSet.getString("nickname"), resultSet.getString("phone_number"), resultSet.getString("adress"), resultSet.getString("email_adress"), resultSet.getDate("birth_date").toLocalDate());
-						listofperson.add(person);
+				try (ResultSet resultSet = statement.executeQuery("SELECT * FROM person")){
+					while(resultSet.next()) {
+						Person person = new Person(resultSet.getInt("idperson"), resultSet.getString("lastname"),
+								resultSet.getString("firstname"),
+								resultSet.getString("nickname"),
+								resultSet.getString("phone_number"),
+								resultSet.getString("address"),
+								resultSet.getString("email_address"),
+								resultSet.getDate("birth_date").toLocalDate());
+						listOfPerson.add(person);
 						}
 					}
-				statement.close();
 				}
-			connection.close();
 			}
 			catch (SQLException e) {
 				e.printStackTrace();
 			}
-		return listofperson;
+		return listOfPerson;
 	}
 	
-	public void addPerson(Person addedPerson) 
-	{
-		try(Connection connection = dataSource.getConnection())
-		{
-			String sqlQuery = "INSERT INTO person(lastname, firstname, nickname, phone_number, address, email_adress, birth_date) VALUES(?,?,?,?,?,?,?)";
-			try (PreparedStatement statement = connection.prepareStatement(sqlQuery))
-			{
+	public Person addPerson(Person addedPerson) {
+		try(Connection connection = dataSource.getConnection()){
+			String sqlQuery = "INSERT INTO person(lastname, firstname, nickname, phone_number, address, email_address, birth_date)"+" VALUES(?,?,?,?,?,?,?)";
+			try (PreparedStatement statement = connection.prepareStatement(sqlQuery,Statement.RETURN_GENERATED_KEYS)){
 				statement.setString(1, addedPerson.getLastname());
 				statement.setString(2, addedPerson.getFirstname());
 				statement.setString(3, addedPerson.getNickname());
@@ -52,12 +52,27 @@ public class PersonDao {
 				statement.setString(5, addedPerson.getAdress());
 				statement.setString(6, addedPerson.getEmail_adress());
 				statement.setDate(7, Date.valueOf(addedPerson.getBirth_date()));
-				statement.close();
+				statement.executeUpdate();
+				ResultSet ids=statement.getGeneratedKeys();
+				if(ids.next()) {
+					return new Person(ids.getInt(1),addedPerson.getLastname(),addedPerson.getFirstname(),addedPerson.getNickname(),addedPerson.getPhone_number(),addedPerson.getAdress(),addedPerson.getEmail_adress(),addedPerson.getBirth_date());
+				}
 			}
-			connection.close();
 		} 
-		catch (SQLException e) 
-		{
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void deletePerson(Person deletedPerson) {
+		try(Connection connection=dataSource.getConnection()){
+			try(PreparedStatement statement=connection.prepareStatement("DELETE FROM person WHERE phone_number=?")){
+				statement.setString(1, deletedPerson.getPhone_number());
+				statement.executeUpdate();
+			}
+		}
+		catch(SQLException e){
 			e.printStackTrace();
 		}
 	}
