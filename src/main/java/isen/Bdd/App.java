@@ -1,38 +1,51 @@
 package isen.Bdd;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
 import java.io.IOException;
 
-/**
- * JavaFX App
- */
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
 public class App extends Application {
-
-    private static Scene scene;
-
-    @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
-        stage.setScene(scene);
-        stage.show();
+	
+	private Stage primaryStage;
+	private AnchorPane mainPage;
+	
+	@Override
+	public void start(Stage primaryStage) {
+		this.primaryStage = primaryStage;
+		this.primaryStage.setTitle("IsenJava2BDD");
+		
+	}
+	
+   public void initMainPage() 
+   {
+        try {
+            // Charge la MainPage depuis le fichier fxml
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("view/MainPage.fxml"));
+            
+            mainPage = (AnchorPane) loader.load();
+            
+            // montre la scène contenant la MainPage
+            Scene scene = new Scene(mainPage);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+   
+   public Stage getPrimaryStage() 
+   {
+	   return primaryStage;
+   }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
-
-    public static void main(String[] args) {
-        launch();
-    }
-
+	 
+	public static void main(String[] args) {
+		launch(args);
+	}
 }
