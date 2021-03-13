@@ -1,18 +1,25 @@
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import App.java;
-import Person.java;
+package view;
 
+import java.awt.event.ActionEvent;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import com.sun.glass.events.MouseEvent;
+
+import isen.Bdd.App;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 
 public class MainPageController {
-ObservableList<E> list=FXCollections.observableArrayList();
+ObservableList<String> list= FXCollections.observableArrayList();
 	
 	@FXML
     private ListView<String> repertoireList;
 	
-	private ListViewItem contact;
+	//private ListViewItem contact;
 	
 	public void initialize(URL url, ResourceBundle rb) {
 		loadData();
@@ -24,21 +31,23 @@ ObservableList<E> list=FXCollections.observableArrayList();
 		String b="Mon deuxieme contact";
 		String c="Mon troisieme contact";
 		String d="Mon quatrieme contact";
-		list.addAll(ab,c,d);
+		list.addAll(a,b,c,d);
 		repertoireList.getItems().addAll(list);
 	}
 	
-	@FXML
+	/*@FXML
 	private void DisplaySelected(MouseEvent event) {
 		App.setRoot("/isen/view/DetailContact");
-	}
+	}*/
 	
 	@FXML
     private Button addButton;
 
-    @FXML
+    /*@FXML
     void addContact(ActionEvent event) {
     	//addPerson()
     	App.setRoot("/isen/view/Formulaire");
-    }
+    }*/
+    
 }
+
