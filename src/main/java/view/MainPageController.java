@@ -10,11 +10,12 @@ import isen.Bdd.App;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 
-public class MainPageController {
-ObservableList<String> list= FXCollections.observableArrayList();
+public class MainPageController implements Initializable{
+ObservableList list= FXCollections.observableArrayList();
 	
 	@FXML
     private ListView<String> repertoireList;
