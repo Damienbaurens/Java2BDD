@@ -2,6 +2,7 @@ package isen.Bdd;
 
 import java.io.IOException;
 
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,41 +12,43 @@ import javafx.stage.Stage;
 public class App extends Application {
 	
 	private Stage primaryStage;
-	private AnchorPane mainPage;
 	
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws IOException 
+	{
+		
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("IsenJava2BDD");
 		
+		showMainPage();
+		
+	}
+
+   
+	public void showMainPage()
+	{
+		FXMLLoader fxmlLoader = new FXMLLoader();
+		fxmlLoader.setLocation(App.class.getResource("../view/MainPage.fxml"));
+		try {
+			AnchorPane mainPage = (AnchorPane) fxmlLoader.load();
+			Scene scene = new Scene(mainPage);
+			this.primaryStage.setScene(scene);
+			this.primaryStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
-   public void initMainPage() 
-   {
-        try {
-            // Charge la MainPage depuis le fichier fxml
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("view/MainPage.fxml"));
-            
-            mainPage = (AnchorPane) loader.load();
-            
-            // montre la scène contenant la MainPage
-            Scene scene = new Scene(mainPage);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-            
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-   
-   public Stage getPrimaryStage() 
-   {
-	   return primaryStage;
-   }
+	public Stage getPrimaryStage() 
+	{
+		return primaryStage;
+	}
 
 	 
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		launch(args);
 	}
 }
