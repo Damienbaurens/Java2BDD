@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 public class App extends Application {
 	
 	private Stage primaryStage;
+	private static Scene scene;
 	
 	@Override
 	public void start(Stage primaryStage) throws IOException 
@@ -31,14 +32,13 @@ public class App extends Application {
 		fxmlLoader.setLocation(App.class.getResource("../view/MainPage.fxml"));
 		try {
 			AnchorPane mainPage = (AnchorPane) fxmlLoader.load();
-			Scene scene = new Scene(mainPage);
+			scene = new Scene(mainPage);
 			this.primaryStage.setScene(scene);
 			this.primaryStage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public Stage getPrimaryStage() 
@@ -51,4 +51,8 @@ public class App extends Application {
 	{
 		launch(args);
 	}
+	
+	
+
+
 }

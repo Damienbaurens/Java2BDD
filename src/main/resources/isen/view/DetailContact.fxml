@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="1074.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DetailContactController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="1074.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DetailContactController">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -62,7 +63,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Text stroke="BLACK" strokeWidth="0.0" text="Nom du contact" wrappingWidth="916.4101715087891" GridPane.columnIndex="1">
+            <Text fx:id="contactName" stroke="BLACK" strokeWidth="0.0" text="Nom du contact" wrappingWidth="916.4101715087891" GridPane.columnIndex="1">
                <font>
                   <Font size="24.0" />
                </font>
@@ -70,36 +71,32 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom du contact" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Text fx:id="contactSurname" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom du contact" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="24.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Surnom du contact" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Text fx:id="contactNickName" strokeType="OUTSIDE" strokeWidth="0.0" text="Surnom du contact" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="24.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone du contact" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Text fx:id="contactPhoneNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone du contact" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font size="24.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse du contact" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Text fx:id="contactAdress" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse du contact" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font size="24.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse e-mail du contact" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Text fx:id="contactMailAdress" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse e-mail du contact" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font size="24.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Anniversaire du contact" GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
+            <DatePicker fx:id="contactBirthDate" promptText="Anniversaire du contact" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
    </center>

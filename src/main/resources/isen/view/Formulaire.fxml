@@ -81,7 +81,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField  prefHeight="65.0" prefWidth="785.0" GridPane.columnIndex="1">
+            <TextField prefHeight="65.0" prefWidth="785.0" GridPane.columnIndex="1">
                <font>
                   <Font size="20.0" />
                </font>

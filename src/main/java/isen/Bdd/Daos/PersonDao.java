@@ -15,9 +15,9 @@ import isen.Bdd.Entities.Person;
 
 public class PersonDao {
 	
-	DataSource dataSource = DataSourceFactory.getDataSource();
+	static DataSource dataSource = DataSourceFactory.getDataSource();
 	
-	public List<Person> listPerson() {
+	public static List<Person> listPerson() {
 		List<Person> listOfPerson= new ArrayList<>();
 		try(Connection connection = dataSource.getConnection()){
 			try (Statement statement = connection.createStatement()){
