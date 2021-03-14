@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-public class DateUtil {
+public class DateUtil {		//Cette classe permet de transformer une LocaleDate en String
 	/** The date pattern that is used for conversion. Change as you wish. */
 	private static final String DATE_PATTERN = "dd.MM.yyyy";
 

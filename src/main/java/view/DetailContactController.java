@@ -11,11 +11,11 @@ import javafx.scene.text.Text;
 
 public class DetailContactController {
 	
-	public static int idContactSelected;
+	public static int indexContactSelected;	//Recuperation de l'index du contact selectionne
 	
 	private Person personSelected;
 	
-	List<Person> personList=PersonDao.listPerson();
+	List<Person> personList=PersonDao.listPerson();	//Importation des contacts de la BDD
 	
 	@FXML
     private Text contactName;
@@ -39,7 +39,7 @@ public class DetailContactController {
     private Text contactBirthDate;
 
     
-    public void displayInformation() {
+    public void displayInformation() {	//Synchronisation des parametres du contact selectionne
     	contactName.setText(personSelected.getLastname());
     	contactSurname.setText(personSelected.getFirstname());
     	contactNickName.setText(personSelected.getNickname());
@@ -51,8 +51,8 @@ public class DetailContactController {
     
     public void initialize() {
     	for(Person person : personList) {
-    		if(idContactSelected==personList.indexOf(person)) {
-    			personSelected=person;
+    		if(indexContactSelected==personList.indexOf(person)) {
+    			personSelected=person;	//Recuperation du contact grace a l'index du contact clique
     		}
     	}
     	displayInformation();

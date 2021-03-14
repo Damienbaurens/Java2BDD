@@ -22,7 +22,7 @@ public class MainPageController implements Initializable {
 	
 	ObservableList<String> list= FXCollections.observableArrayList();
 	
-	List<Person> personList=PersonDao.listPerson();
+	List<Person> personList=PersonDao.listPerson();	//Importation des contacts de la BDD
 	PersonDao personDao = new PersonDao();
 	
 	
@@ -33,7 +33,7 @@ public class MainPageController implements Initializable {
 		loadData();
 	}
 	
-	private void loadData() {
+	private void loadData() {	//Affiche la liste des contacts en affichant leur surnom
 		list.removeAll(list);
 		for(Person person : personList) {
 			list.add(person.getNickname());
@@ -42,18 +42,18 @@ public class MainPageController implements Initializable {
 	}
 	
 	@FXML
-	private void displaySelected(MouseEvent event) throws IOException {
-		DetailContactController.idContactSelected=repertoireList.getSelectionModel().getSelectedIndex();
+	private void displaySelected(MouseEvent event) throws IOException {	//Recupere l'index du contact clique et dirige vers detailcontact
+		DetailContactController.indexContactSelected=repertoireList.getSelectionModel().getSelectedIndex();
 		App.setRoot("/isen/view/DetailContact");
 	}
 
     @FXML
-    void addContact(ActionEvent event) throws IOException {
+    void addContact(ActionEvent event) throws IOException {	//Ajoute un contact et dirige vers le formulaire
     	App.setRoot("/isen/view/Formulaire");
     }
     
     @FXML
-    void exportBDD(ActionEvent event) throws IOException {
+    void exportBDD(ActionEvent event) throws IOException {	//Exporte la BDD
     	personDao.exportDataBase();
     }
 }

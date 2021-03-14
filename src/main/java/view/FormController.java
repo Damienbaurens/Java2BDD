@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 
 public class FormController implements Initializable {
 	
+	//Pour l'affichage de la date
 	ObservableList<String> dayChoices = FXCollections.observableArrayList();
 	ObservableList<String> monthChoices = FXCollections.observableArrayList("01","02","03","04","05","06","07","08","09","10","11","12");
 	ObservableList<String> yearChoices = FXCollections.observableArrayList();
@@ -56,7 +57,7 @@ public class FormController implements Initializable {
 	}
 	
 	@FXML
-	void validation() throws IOException 
+	void validation() throws IOException //Valide l'inscription du nouveau contact
 	{
 		LocalDate birthDate = LocalDate.parse(yearChoiceBox.getValue() + "-" + monthChoiceBox.getValue()+"-" + dayChoiceBox.getValue());
 		
@@ -65,7 +66,7 @@ public class FormController implements Initializable {
 	}
 	
 	@FXML
-	void cancel() throws IOException 
+	void cancel() throws IOException //Annule l'action et redirige vers mainpage
 	{
 		App.setRoot("/isen/view/MainPage");
 	}

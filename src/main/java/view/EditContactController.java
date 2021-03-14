@@ -17,10 +17,13 @@ import javafx.scene.control.TextField;
 public class EditContactController {
 private Person personSelected;
 
+	//Pour les boxs de la date d'anniversaire
 	ObservableList<String> dayChoices = FXCollections.observableArrayList();
 	ObservableList<String> monthChoices = FXCollections.observableArrayList("01","02","03","04","05","06","07","08","09","10","11","12");
 	ObservableList<String> yearChoices = FXCollections.observableArrayList();
-	List<Person> personList=PersonDao.listPerson();
+	
+	List<Person> personList=PersonDao.listPerson();	//Recuperation de l'index du contact selectionne
+	
 	PersonDao personDao = new PersonDao(); 
 	
 	@FXML
@@ -51,18 +54,18 @@ private Person personSelected;
 	ChoiceBox<String> yearChoiceBox;
 
     @FXML
-    void backFunction(ActionEvent event) throws IOException {
+    void backFunction(ActionEvent event) throws IOException {	//Dirige vers la mainpage
     	App.setRoot("/isen/view/MainPage");
     }
 
     @FXML
-    void validateEditContact(ActionEvent event) throws IOException {
+    void validateEditContact(ActionEvent event) throws IOException {	//valide les informations modifiees du contact et dirige vers mainpage
     	LocalDate birthDate = LocalDate.parse(yearChoiceBox.getValue() + "-" + monthChoiceBox.getValue()+"-" + dayChoiceBox.getValue());
     	personDao.editPerson(personSelected.getIdperson(),editLastNameContact.getText(), editFirstNameContact.getText(), editNickNameContact.getText(),"+33"+ editPhoneNumberContact.getText(),editAdressContact.getText(), editMailAdressContact.getText(), birthDate);
     	App.setRoot("/isen/view/MainPage");
     }
     
-    public void displayInformation() {
+    public void displayInformation() {	//Synchronise les informations du contact
     	editLastNameContact.setText(personSelected.getLastname());
     	editFirstNameContact.setText(personSelected.getFirstname());
     	editNickNameContact.setText(personSelected.getNickname());
@@ -81,8 +84,8 @@ private Person personSelected;
     }
     
     public void initialize() {
-    	for(Person person : personList) {
-    		if(DetailContactController.idContactSelected==personList.indexOf(person)) {
+    	for(Person person : personList) {	//Recuperation du contact grace a l'index du contact clique
+    		if(DetailContactController.indexContactSelected==personList.indexOf(person)) {
     			personSelected=person;
     		}
     	}
@@ -90,7 +93,7 @@ private Person personSelected;
     	displayInformation();
 	}
     
-    private void loadChoiceBoxes() 
+    private void loadChoiceBoxes() 	//Pour l'affichage de la date
 	{
 		dayChoices.removeAll(dayChoices);
 		yearChoices.removeAll(yearChoices);
