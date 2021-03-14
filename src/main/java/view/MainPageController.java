@@ -1,21 +1,20 @@
 package view;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import com.sun.glass.events.MouseEvent;
-
 import isen.Bdd.App;
 import isen.Bdd.Daos.PersonDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import isen.Bdd.Entities.Person;
 
 public class MainPageController implements Initializable {
@@ -43,16 +42,16 @@ public class MainPageController implements Initializable {
 	
 	@FXML
 	private void DisplaySelected(MouseEvent event) throws IOException {
-		//App.setRoot("/isen/view/DetailContact");
+		App.setRoot("/isen/view/DetailContact");
 	}
 	
 	@FXML
     private Button addButton;
 
     @FXML
-    void addContact(ActionEvent event) {
+    void addContact(ActionEvent event) throws IOException {
     	//addPerson()
-    	//App.setRoot("/isen/view/Formulaire");
+    	App.setRoot("/isen/view/Formulaire");
     }
     
     /*

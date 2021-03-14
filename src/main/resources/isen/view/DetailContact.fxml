@@ -101,6 +101,6 @@
       </GridPane>
    </center>
    <bottom>
-      <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#DeleteContact" prefHeight="12.0" prefWidth="95.0" text="Delete Contact" BorderPane.alignment="CENTER" />
+      <Button fx:id="deleteButton" mnemonicParsing="false" prefHeight="12.0" prefWidth="95.0" text="Delete Contact" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>

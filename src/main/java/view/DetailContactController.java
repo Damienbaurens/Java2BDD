@@ -39,8 +39,6 @@ public class DetailContactController {
     @FXML
     private Text contactMailAdress;
 
-    @FXML
-    private Text contactBirthDate;
     
     private void DisplayInformation(Person contact) {
     	contactName.setText(contact.getLastname());
@@ -49,7 +47,7 @@ public class DetailContactController {
     	contactPhoneNumber.setText(contact.getPhone_number());
     	contactAdress.setText(contact.getAdress());
     	contactMailAdress.setText(contact.getEmail_adress());
-    	//contactBirthDate.setText(DateUtil.format(contact.getBirth_date()));
+
     }
     
     public void initialize() {
