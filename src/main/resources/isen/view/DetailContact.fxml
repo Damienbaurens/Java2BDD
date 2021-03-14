@@ -3,6 +3,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -10,16 +12,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="1074.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DetailContactController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../css/view.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DetailContactController">
    <center>
-      <GridPane BorderPane.alignment="CENTER">
+      <GridPane prefHeight="210.0" prefWidth="332.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="473.0" minWidth="10.0" prefWidth="160.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="914.0" minWidth="10.0" prefWidth="914.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="473.0" minWidth="10.0" prefWidth="145.5999755859375" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="914.0" minWidth="10.0" prefWidth="844.8000244140625" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="37.600010299682616" minHeight="10.0" prefHeight="28.799993896484374" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="32.000006103515624" minHeight="10.0" prefHeight="32.000006103515624" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -27,44 +29,44 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="120.0" prefWidth="499.0" text="Nom">
+            <Label alignment="CENTER" prefWidth="643.0" text="Nom">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="119.0" prefWidth="643.0" text="Prénom" GridPane.rowIndex="1">
+            <Label alignment="CENTER" prefWidth="643.0" text="Prénom" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="119.0" prefWidth="545.0" text="Surnom" GridPane.rowIndex="2">
+            <Label alignment="CENTER" prefWidth="643.0" text="Surnom" GridPane.rowIndex="2">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="119.0" prefWidth="550.0" text="Téléphone" GridPane.rowIndex="3">
+            <Label alignment="CENTER" prefWidth="643.0" text="Téléphone" GridPane.rowIndex="3">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="119.0" prefWidth="554.0" text="Adresse" GridPane.rowIndex="4">
+            <Label alignment="CENTER" prefWidth="643.0" text="Adresse" GridPane.rowIndex="4">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="153.0" prefWidth="329.0" text="Adresse e-mail" GridPane.rowIndex="5">
+            <Label alignment="CENTER" prefWidth="643.0" text="Adresse e-mail" GridPane.rowIndex="5">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="164.0" prefWidth="383.0" text="Anniversaire" GridPane.rowIndex="6">
+            <Label alignment="CENTER" prefWidth="643.0" text="Anniversaire" GridPane.rowIndex="6">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
             <Text fx:id="contactName" stroke="BLACK" strokeWidth="0.0" text="Nom du contact" wrappingWidth="916.4101715087891" GridPane.columnIndex="1">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Garamond" size="24.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
@@ -72,44 +74,56 @@
             </Text>
             <Text fx:id="contactSurname" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom du contact" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Garamond" size="24.0" />
                </font>
             </Text>
             <Text fx:id="contactNickName" strokeType="OUTSIDE" strokeWidth="0.0" text="Surnom du contact" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Garamond" size="24.0" />
                </font>
             </Text>
-            <Text fx:id="contactPhoneNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone du contact" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Text fx:id="contactPhoneNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone du contact" wrappingWidth="265.73126181960106" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Garamond" size="24.0" />
                </font>
             </Text>
             <Text fx:id="contactAdress" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse du contact" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Garamond" size="24.0" />
                </font>
             </Text>
             <Text fx:id="contactMailAdress" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse e-mail du contact" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Garamond" size="24.0" />
                </font>
             </Text>
-            <Text fx:id="contactBirthDate" strokeType="OUTSIDE" strokeWidth="0.0" text="Anniversiare du contact" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <Text fx:id="contactBirthDate" strokeType="OUTSIDE" strokeWidth="0.0" text="Anniversaire du contact" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Garamond" size="24.0" />
                </font>
             </Text>
          </children>
       </GridPane>
    </center>
    <bottom>
-      <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteContact" prefHeight="12.0" prefWidth="95.0" text="Delete Contact" BorderPane.alignment="CENTER" />
+      <SplitPane dividerPositions="0.15, 0.85" prefHeight="62.0" prefWidth="990.0" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Button fx:id="deleteButton" layoutX="9.0" layoutY="16.0" mnemonicParsing="false" onAction="#deleteContact" text="Effacer un Contact" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="158.0" prefWidth="673.0">
+               <children>
+                  <Button fx:id="editContactButton" alignment="CENTER" layoutX="280.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToEditView" text="Editer un Contact" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="backButton" contentDisplay="BOTTOM" layoutX="44.0" layoutY="16.0" mnemonicParsing="false" onAction="#backFunction" text="Retour" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
    </bottom>
-   <right>
-      <Button fx:id="editContactButton" alignment="CENTER" mnemonicParsing="false" onAction="#goToEditView" prefHeight="31.0" prefWidth="85.0" text="Edit Contact" BorderPane.alignment="BOTTOM_CENTER" />
-   </right>
-   <top>
-      <Button fx:id="backButton" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#backFunction" text="Back" BorderPane.alignment="CENTER_RIGHT" />
-   </top>
 </BorderPane>
