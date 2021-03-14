@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainPageController">
    <children>
-      <Button fx:id="addButton" layoutX="99.0" layoutY="449.0" mnemonicParsing="false" onAction="#addContact" prefHeight="36.0" prefWidth="208.0" text="Add" />
+      <Button layoutX="99.0" layoutY="449.0" mnemonicParsing="false" onAction="#addContact" prefHeight="36.0" prefWidth="208.0" text="Add" />
       <VBox alignment="TOP_CENTER" layoutY="6.0" prefHeight="423.0" prefWidth="400.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="REPERTOIRE">
@@ -17,7 +17,7 @@
                   <Font size="27.0" />
                </font>
             </Text>
-            <ListView fx:id="repertoireList" onMouseClicked="#DisplaySelected" prefHeight="390.0" prefWidth="400.0" />
+            <ListView fx:id="repertoireList" onMouseClicked="#displaySelected" prefHeight="390.0" prefWidth="400.0" />
          </children>
       </VBox>
    </children>

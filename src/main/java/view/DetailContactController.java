@@ -1,24 +1,21 @@
 package view;
 
 import java.io.IOException;
-
+import java.util.List;
 import isen.Bdd.App;
 import isen.Bdd.Daos.PersonDao;
 import isen.Bdd.Entities.Person;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
 public class DetailContactController {
-	public static Person contactSelected;
-	@FXML
-    private Button deleteButton;
 	
-	/*@FXML
-    void DeleteContact(ActionEvent event) {
-		PersonDao.deletePerson(contactSelected);
-    }*/
+	public static int idContactSelected;
+	
+	private Person personSelected;
+	
+	List<Person> personList=PersonDao.listPerson();
 	
 	@FXML
     private Text contactName;
@@ -37,28 +34,45 @@ public class DetailContactController {
 
     @FXML
     private Text contactMailAdress;
+    
+    @FXML
+    private Text contactBirthDate;
 
     
-    public void DisplayInformation() {
-    	contactName.setText(contactSelected.getLastname());
-    	contactSurname.setText(contactSelected.getFirstname());
-    	contactNickName.setText(contactSelected.getNickname());
-    	contactPhoneNumber.setText(contactSelected.getPhone_number());
-    	contactAdress.setText(contactSelected.getAdress());
-    	contactMailAdress.setText(contactSelected.getEmail_adress());
-
+    public void displayInformation() {
+    	contactName.setText(personSelected.getLastname());
+    	contactSurname.setText(personSelected.getFirstname());
+    	contactNickName.setText(personSelected.getNickname());
+    	contactPhoneNumber.setText(personSelected.getPhone_number());
+    	contactAdress.setText(personSelected.getAdress());
+    	contactMailAdress.setText(personSelected.getEmail_adress());
+    	contactBirthDate.setText(DateUtil.format(personSelected.getBirth_date()));
     }
     
     public void initialize() {
-    	DisplayInformation();
+    	for(Person person : personList) {
+    		if(idContactSelected==personList.indexOf(person)) {
+    			personSelected=person;
+    		}
+    	}
+    	displayInformation();
 	}
     
     @FXML
-    private Button backButton;
+    void deleteContact(ActionEvent event) throws IOException {
+		
+		PersonDao.deletePerson(personSelected);
+		App.setRoot("/isen/view/MainPage");
+    }
 
     @FXML
     void backFunction(ActionEvent event) throws IOException {
     	App.setRoot("/isen/view/MainPage");
+    }
+    
+    @FXML
+    void goToEditView(ActionEvent event) throws IOException {
+    	App.setRoot("/isen/view/EditContact");
     }
 
 }

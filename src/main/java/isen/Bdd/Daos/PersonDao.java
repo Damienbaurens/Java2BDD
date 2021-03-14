@@ -31,6 +31,7 @@ public class PersonDao {
 								resultSet.getString("address"),
 								resultSet.getString("email_address"),
 								resultSet.getDate("birth_date").toLocalDate());
+						person.setIdperson(resultSet.getInt("idperson"));
 						listOfPerson.add(person);
 						}
 					}
@@ -91,7 +92,7 @@ public class PersonDao {
 		}
 	}
 	
-	public void deletePerson(Person deletedPerson) {
+	public static void deletePerson(Person deletedPerson) {
 		try(Connection connection=dataSource.getConnection()){
 			try(PreparedStatement statement=connection.prepareStatement("DELETE FROM person WHERE phone_number=?")){
 				statement.setString(1, deletedPerson.getPhone_number());

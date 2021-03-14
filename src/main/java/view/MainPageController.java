@@ -12,56 +12,46 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import isen.Bdd.Entities.Person;
 
+
 public class MainPageController implements Initializable {
-	ObservableList<Person> list= FXCollections.observableArrayList();
+	
+	ObservableList<String> list= FXCollections.observableArrayList();
 	
 	List<Person> personList=PersonDao.listPerson();
 	
-	
 	@FXML
-    private ListView<Person> repertoireList;
+    private ListView<String> repertoireList;
 	
 	public void initialize(URL url, ResourceBundle rb) {
 		loadData();
 	}
-
+	
 	private void loadData() {
 		list.removeAll(list);
 		for(Person person : personList) {
-			list.add(person);
+			list.add(person.getNickname());
 		}
 		repertoireList.getItems().addAll(list);
-		//repertoireList.cellFactoryProperty(repertoireList);
-		
 	}
 	
 	@FXML
-	private void DisplaySelected(MouseEvent event) throws IOException {
-		DetailContactController.contactSelected=repertoireList.getSelectionModel().getSelectedItem();
+	private void displaySelected(MouseEvent event) throws IOException {
+		DetailContactController.idContactSelected=repertoireList.getSelectionModel().getSelectedIndex();
 		App.setRoot("/isen/view/DetailContact");
 	}
-	
-	@FXML
-    private Button addButton;
 
     @FXML
     void addContact(ActionEvent event) throws IOException {
     	App.setRoot("/isen/view/Formulaire");
     }
-
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return ((Person) repertoireList.getItems()).getNickname();
-	}
     
-    
-    
-    
+    public void dldd() {
+    	
+    }
 }
 
