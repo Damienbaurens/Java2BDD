@@ -12,8 +12,7 @@ public class Person {
 	private LocalDate birth_date;
 	
 
-	public Person(Integer idperson, String lastname, String firstname, String nickname, String phone_number, String adress, String email_adress, LocalDate birth_date) {
-		this.idperson = idperson;
+	public Person(String lastname, String firstname, String nickname, String phone_number, String adress, String email_adress, LocalDate birth_date) {
 		this.lastname = lastname;
 		this.firstname = firstname;
 		this.nickname = nickname;

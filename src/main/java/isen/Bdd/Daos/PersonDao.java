@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class PersonDao {
 			try (Statement statement = connection.createStatement()){
 				try (ResultSet resultSet = statement.executeQuery("SELECT * FROM person")){
 					while(resultSet.next()) {
-						Person person = new Person(resultSet.getInt("idperson"), resultSet.getString("lastname"),
+						Person person = new Person(resultSet.getString("lastname"),
 								resultSet.getString("firstname"),
 								resultSet.getString("nickname"),
 								resultSet.getString("phone_number"),
@@ -41,21 +42,21 @@ public class PersonDao {
 		return listOfPerson;
 	}
 	
-	public Person addPerson(Person addedPerson) {
+	public Person addPerson(String lastName,String firstName, String surName, String phoneNumber, String address, String email, LocalDate birthDate) {
 		try(Connection connection = dataSource.getConnection()){
 			String sqlQuery = "INSERT INTO person(lastname, firstname, nickname, phone_number, address, email_address, birth_date)"+" VALUES(?,?,?,?,?,?,?)";
 			try (PreparedStatement statement = connection.prepareStatement(sqlQuery,Statement.RETURN_GENERATED_KEYS)){
-				statement.setString(1, addedPerson.getLastname());
-				statement.setString(2, addedPerson.getFirstname());
-				statement.setString(3, addedPerson.getNickname());
-				statement.setString(4, addedPerson.getPhone_number());
-				statement.setString(5, addedPerson.getAdress());
-				statement.setString(6, addedPerson.getEmail_adress());
-				statement.setDate(7, Date.valueOf(addedPerson.getBirth_date()));
+				statement.setString(1, lastName);
+				statement.setString(2, firstName);
+				statement.setString(3, surName);
+				statement.setString(4, phoneNumber);
+				statement.setString(5, address);
+				statement.setString(6, email);
+				statement.setDate(7, Date.valueOf(birthDate));
 				statement.executeUpdate();
 				ResultSet ids=statement.getGeneratedKeys();
 				if(ids.next()) {
-					return new Person(ids.getInt(1),addedPerson.getLastname(),addedPerson.getFirstname(),addedPerson.getNickname(),addedPerson.getPhone_number(),addedPerson.getAdress(),addedPerson.getEmail_adress(),addedPerson.getBirth_date());
+					return new Person(lastName,firstName,surName,phoneNumber,address,email,birthDate);
 				}
 			}
 		} 

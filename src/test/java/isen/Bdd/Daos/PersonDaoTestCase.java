@@ -50,10 +50,8 @@ public class PersonDaoTestCase {
 	
 	@Test
 	public void shouldAddPerson() throws Exception {
-		//GIVEN
-		Person personToAdded=new Person(Integer.valueOf(3),"DUPONT","Jean","Dudu","547675466","adresse de jean","jean.dupont@gmail.com",LocalDate.of(1971,6,29));
 		//WHEN
-		personDao.addPerson(personToAdded);
+		personDao.addPerson("DUPONT","Jean","Dudu","547675466","adresse de jean","jean.dupont@gmail.com",LocalDate.of(1971,6,29));
 		//THEN
 		Connection connection=DataSourceFactory.getDataSource().getConnection();
 		Statement statement=connection.createStatement();
@@ -76,9 +74,9 @@ public class PersonDaoTestCase {
 	@Test
 	public void shouldDeletePerson() throws Exception{
 		//GIVEN
-		Person personToAddedAndDeleted=new Person(Integer.valueOf(4),"MARTIN","Paul","Popo","9549696","adresse de paul","paul.martin@gmail.com",LocalDate.of(1976,12,5));
+		Person personToAddedAndDeleted=new Person("MARTIN","Paul","Popo","9549696","adresse de paul","paul.martin@gmail.com",LocalDate.of(1976,12,5));
 		//WHEN
-		personDao.addPerson(personToAddedAndDeleted);
+		personDao.addPerson("MARTIN","Paul","Popo","9549696","adresse de paul","paul.martin@gmail.com",LocalDate.of(1976,12,5));
 		personDao.deletePerson(personToAddedAndDeleted);
 		//THEN
 		Connection connection=DataSourceFactory.getDataSource().getConnection();
