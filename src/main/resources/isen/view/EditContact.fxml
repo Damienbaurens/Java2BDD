@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -96,17 +97,17 @@
    <bottom>
       <SplitPane dividerPositions="0.15, 0.85" prefHeight="59.0" prefWidth="1074.0" BorderPane.alignment="CENTER">
         <items>
-            <Pane prefHeight="158.0" prefWidth="442.0" />
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane prefHeight="58.0" prefWidth="179.0" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="343.0" layoutY="15.0" mnemonicParsing="false" onAction="#validateEditContact" text="Valider" />
+                  <Button mnemonicParsing="false" onAction="#validateEditContact" text="Valider" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="290.0" AnchorPane.topAnchor="15.0" />
                </children>
-            </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="53.0" layoutY="22.0" mnemonicParsing="false" onAction="#backFunction" text="Retour" />
+                  <Button mnemonicParsing="false" onAction="#backFunction" text="Retour" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="15.0" />
                </children>
-            </Pane>
+            </AnchorPane>
         </items>
          <opaqueInsets>
             <Insets />
