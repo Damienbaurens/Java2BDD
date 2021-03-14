@@ -77,4 +77,10 @@ public class PersonDao {
 		}
 	}
 	
+	/*public Person getbyNickname(String nicknamePerson) {
+		try(Connection connection=dataSource.getConnection()){
+			try(PreparedStatement statement=connection.prepareStatement(")e)
+		}
+	}*/
+	
 }

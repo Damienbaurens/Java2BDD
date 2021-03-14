@@ -103,4 +103,7 @@
    <bottom>
       <Button fx:id="deleteButton" mnemonicParsing="false" prefHeight="12.0" prefWidth="95.0" text="Delete Contact" BorderPane.alignment="CENTER" />
    </bottom>
+   <right>
+      <Button fx:id="backButton" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#backFunction" text="Back" BorderPane.alignment="BOTTOM_LEFT" />
+   </right>
 </BorderPane>

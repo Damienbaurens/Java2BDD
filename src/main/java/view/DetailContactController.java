@@ -1,25 +1,24 @@
 package view;
 
-import java.awt.event.ActionEvent;
-import java.net.URL;
-import java.sql.Date;
-import java.util.ResourceBundle;
+import java.io.IOException;
 
-import org.assertj.core.util.DateUtil;
-
+import isen.Bdd.App;
+import isen.Bdd.Daos.PersonDao;
 import isen.Bdd.Entities.Person;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
 public class DetailContactController {
+	public static Person contactSelected;
 	@FXML
     private Button deleteButton;
 	
-	@FXML
+	/*@FXML
     void DeleteContact(ActionEvent event) {
-		//deletePerson()
-    }
+		PersonDao.deletePerson(contactSelected);
+    }*/
 	
 	@FXML
     private Text contactName;
@@ -40,18 +39,26 @@ public class DetailContactController {
     private Text contactMailAdress;
 
     
-    private void DisplayInformation(Person contact) {
-    	contactName.setText(contact.getLastname());
-    	contactSurname.setText(contact.getFirstname());
-    	contactNickName.setText(contact.getNickname());
-    	contactPhoneNumber.setText(contact.getPhone_number());
-    	contactAdress.setText(contact.getAdress());
-    	contactMailAdress.setText(contact.getEmail_adress());
+    public void DisplayInformation() {
+    	contactName.setText(contactSelected.getLastname());
+    	contactSurname.setText(contactSelected.getFirstname());
+    	contactNickName.setText(contactSelected.getNickname());
+    	contactPhoneNumber.setText(contactSelected.getPhone_number());
+    	contactAdress.setText(contactSelected.getAdress());
+    	contactMailAdress.setText(contactSelected.getEmail_adress());
 
     }
     
     public void initialize() {
-		
+    	DisplayInformation();
 	}
+    
+    @FXML
+    private Button backButton;
+
+    @FXML
+    void backFunction(ActionEvent event) throws IOException {
+    	App.setRoot("/isen/view/MainPage");
+    }
 
 }

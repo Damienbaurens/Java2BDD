@@ -18,14 +18,13 @@ import javafx.scene.input.MouseEvent;
 import isen.Bdd.Entities.Person;
 
 public class MainPageController implements Initializable {
-	ObservableList<String> list= FXCollections.observableArrayList();
+	ObservableList<Person> list= FXCollections.observableArrayList();
 	
 	List<Person> personList=PersonDao.listPerson();
 	
-	@FXML
-    private ListView<String> repertoireList;
 	
-	//private ListViewItem contact;
+	@FXML
+    private ListView<Person> repertoireList;
 	
 	public void initialize(URL url, ResourceBundle rb) {
 		loadData();
@@ -34,14 +33,16 @@ public class MainPageController implements Initializable {
 	private void loadData() {
 		list.removeAll(list);
 		for(Person person : personList) {
-			list.add(person.getNickname());
+			list.add(person);
 		}
 		repertoireList.getItems().addAll(list);
+		//repertoireList.cellFactoryProperty(repertoireList);
 		
 	}
 	
 	@FXML
 	private void DisplaySelected(MouseEvent event) throws IOException {
+		DetailContactController.contactSelected=repertoireList.getSelectionModel().getSelectedItem();
 		App.setRoot("/isen/view/DetailContact");
 	}
 	
@@ -50,15 +51,17 @@ public class MainPageController implements Initializable {
 
     @FXML
     void addContact(ActionEvent event) throws IOException {
-    	//addPerson()
     	App.setRoot("/isen/view/Formulaire");
     }
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return ((Person) repertoireList.getItems()).getNickname();
+	}
     
-    /*
-    @FXML
-    void ContactSelection(MouseEvent event) throws IOException {
-    	App.setRoot("isen/view/DetailContact");
-    }*/
+    
+    
     
 }
 
