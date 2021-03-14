@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -15,22 +16,19 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../css/view.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FormController">
    <bottom>
-      <SplitPane dividerPositions="0.15, 0.85" prefHeight="61.0" prefWidth="1074.0" BorderPane.alignment="CENTER">
+      <SplitPane dividerPositions="0.15, 0.5" prefHeight="61.0" prefWidth="1074.0" BorderPane.alignment="CENTER">
         <items>
-            <Pane prefHeight="67.0" prefWidth="744.0">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane prefHeight="62.0" prefWidth="373.0">
                <children>
-                  <Button fx:id="validationButton" layoutX="346.0" layoutY="17.0" mnemonicParsing="false" onAction="#validation" text="Valider" />
+                  <Button fx:id="validationButton" mnemonicParsing="false" onAction="#validation" text="Valider" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="15.0" />
                </children>
-            </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            </AnchorPane>
+            <AnchorPane prefHeight="61.0" prefWidth="536.0">
                <children>
-                  <Button layoutX="346.0" layoutY="17.0" mnemonicParsing="false" onAction="#validation" text="Valider" />
-               </children></Pane>
-            <Pane prefHeight="78.0" prefWidth="369.0">
-               <children>
-                  <Button fx:id="cancelButton" layoutX="50.0" layoutY="17.0" mnemonicParsing="false" onAction="#cancel" text="Annuler" />
+                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancel" text="Annuler" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="15.0" />
                </children>
-            </Pane>
+            </AnchorPane>
         </items>
          <BorderPane.margin>
             <Insets top="20.0" />
