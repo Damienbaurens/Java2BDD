@@ -23,6 +23,8 @@ public class MainPageController implements Initializable {
 	ObservableList<String> list= FXCollections.observableArrayList();
 	
 	List<Person> personList=PersonDao.listPerson();
+	PersonDao personDao = new PersonDao();
+	
 	
 	@FXML
     private ListView<String> repertoireList;
@@ -51,8 +53,8 @@ public class MainPageController implements Initializable {
     }
     
     @FXML
-    void exportBDD(ActionEvent event) {
-
+    void exportBDD(ActionEvent event) throws IOException {
+    	personDao.exportDataBase();
     }
 }
 

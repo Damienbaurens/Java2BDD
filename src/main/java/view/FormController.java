@@ -60,7 +60,7 @@ public class FormController implements Initializable {
 	{
 		LocalDate birthDate = LocalDate.parse(yearChoiceBox.getValue() + "-" + monthChoiceBox.getValue()+"-" + dayChoiceBox.getValue());
 		
-		personDao.addPerson(lastNameTF.getText(), firstNameTF.getText(), surNameTF.getText(), phoneNumberTF.getText(), addressTF.getText(), emailTF.getText(), birthDate);
+		personDao.addPerson(lastNameTF.getText(), firstNameTF.getText(), surNameTF.getText(), "+33"+ phoneNumberTF.getText(), addressTF.getText(), emailTF.getText(), birthDate);
 		App.setRoot("/isen/view/MainPage");
 	}
 	
@@ -72,6 +72,8 @@ public class FormController implements Initializable {
 	
 	private void loadChoiceBoxes() 
 	{
+		// initialise les valeurs possibles des choiceBoxes
+		
 		dayChoices.removeAll(dayChoices);
 		yearChoices.removeAll(yearChoices);
 		String value;

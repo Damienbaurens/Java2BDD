@@ -58,7 +58,7 @@ private Person personSelected;
     @FXML
     void validateEditContact(ActionEvent event) throws IOException {
     	LocalDate birthDate = LocalDate.parse(yearChoiceBox.getValue() + "-" + monthChoiceBox.getValue()+"-" + dayChoiceBox.getValue());
-    	personDao.editPerson(personSelected.getIdperson(),editLastNameContact.getText(), editFirstNameContact.getText(), editNickNameContact.getText(), editPhoneNumberContact.getText(),editAdressContact.getText(), editMailAdressContact.getText(), birthDate);
+    	personDao.editPerson(personSelected.getIdperson(),editLastNameContact.getText(), editFirstNameContact.getText(), editNickNameContact.getText(),"+33"+ editPhoneNumberContact.getText(),editAdressContact.getText(), editMailAdressContact.getText(), birthDate);
     	App.setRoot("/isen/view/MainPage");
     }
     
