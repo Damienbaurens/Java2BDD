@@ -43,9 +43,9 @@ public class PersonDaoTestCase {
 		 List<Person> personnes = personDao.listPerson();
 		 //THEN
 		 assertThat(personnes).hasSize(2).doesNotContainNull();
-		 assertThat(personnes).extracting("idperson","lastname", "firstname","nickname","phone_number","adress","email_adress","birth_date").containsOnly(
-				 tuple(1, "CHOPINEAU", "Maxence","Chopi","0011223344","Lille", "maxence.chopineau@gmail.com", LocalDate.of(1999, 4, 17)),
-				 tuple(2, "LEFEU", "Joseph","LE POMPIER","5566778899","Paumer City", "joseph.aeteintlefeu@gmail.com", LocalDate.of(1994, 11, 3)));
+		 assertThat(personnes).extracting("lastname", "firstname","nickname","phone_number","adress","email_adress","birth_date").containsOnly(
+				 tuple("CHOPINEAU", "Maxence","Chopi","0011223344","Lille", "maxence.chopineau@gmail.com", LocalDate.of(1999, 4, 17)),
+				 tuple("LEFEU", "Joseph","LE POMPIER","5566778899","Paumer City", "joseph.aeteintlefeu@gmail.com", LocalDate.of(1994, 11, 3)));
 	 }
 	
 	@Test
@@ -86,6 +86,35 @@ public class PersonDaoTestCase {
 		resultSet.close(); 
 	    statement.close();
 		connection.close();
+	}
+	
+	@Test
+	public void shouldEditPerson() throws Exception{
+		//GIVEN
+		personDao.addPerson("MARTIN","Paul","Popo","9549696","adresse de paul","paul.martin@gmail.com",LocalDate.of(1976,12,5));
+		
+		Connection connection=DataSourceFactory.getDataSource().getConnection();
+		Statement statement=connection.createStatement();
+		ResultSet resultSet= statement.executeQuery("SELECT * FROM person WHERE phone_number=9549696");
+		Integer idPerson = resultSet.getInt("idperson");
+		resultSet.close(); 
+	    statement.close();
+		
+		
+		//WHEN
+		personDao.editPerson(idPerson,"MARTIN","Paul","Polochon","9549696","adresse de paul 2","paul.martin@gmail.com",LocalDate.of(1976,12,5));
+		
+		//THEN
+		Statement statement2=connection.createStatement();
+		ResultSet resultSet2=statement2.executeQuery("SELECT * FROM person WHERE idperson= " + idPerson.toString());
+		assertThat(resultSet2.next()).isTrue();
+		assertThat(resultSet2.getString("nickname")).isEqualTo("Polochon");
+		assertThat(resultSet2.getString("address")).isEqualTo("adresse de paul 2");
+		
+		resultSet2.close();
+		statement2.close();
+		connection.close();
+		
 	}
 	
 }

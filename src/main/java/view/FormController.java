@@ -97,7 +97,4 @@ public class FormController implements Initializable {
 		}
 		yearChoiceBox.setItems(yearChoices);
 	}
-
-
-	
 }

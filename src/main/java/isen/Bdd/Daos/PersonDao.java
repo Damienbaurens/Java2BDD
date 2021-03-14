@@ -66,6 +66,31 @@ public class PersonDao {
 		return null;
 	}
 	
+	public void editPerson(Integer idPerson,String lastName, String firstName, String surName, String phoneNumber, String address, String email, LocalDate birthDate)
+	{
+		try(Connection connection=dataSource.getConnection())
+		{
+			String sqlQuery = "UPDATE person set lastname = ?, firstname =?, nickname=?, phone_number=?, address=?, email_address=?, birth_date= ? WHERE idperson=?";
+			try(PreparedStatement statement = connection.prepareStatement(sqlQuery))
+			{
+				statement.setString(1, lastName);
+				statement.setString(2,firstName);
+				statement.setString(3,surName);
+				statement.setString(4,phoneNumber);
+				statement.setString(5,address);
+				statement.setString(6,email);
+				statement.setDate(7,Date.valueOf(birthDate));
+				statement.setInt(8,idPerson);
+				statement.executeUpdate();
+			}
+			
+		} catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public void deletePerson(Person deletedPerson) {
 		try(Connection connection=dataSource.getConnection()){
 			try(PreparedStatement statement=connection.prepareStatement("DELETE FROM person WHERE phone_number=?")){
