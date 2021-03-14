@@ -49,9 +49,5 @@ public class MainPageController implements Initializable {
     void addContact(ActionEvent event) throws IOException {
     	App.setRoot("/isen/view/Formulaire");
     }
-    
-    public void dldd() {
-    	
-    }
 }
 
