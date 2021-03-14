@@ -61,7 +61,7 @@ public class DetailContactController {
     @FXML
     void deleteContact(ActionEvent event) throws IOException {
 		
-		PersonDao.deletePerson(personSelected);
+		PersonDao.deletePerson(personSelected.getIdperson());
 		App.setRoot("/isen/view/MainPage");
     }
 

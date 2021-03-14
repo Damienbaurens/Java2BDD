@@ -100,10 +100,10 @@ public class PersonDao {
 		}
 	}
 	
-	public static void deletePerson(Person deletedPerson) {
+	public static void deletePerson(Integer idPerson) {
 		try(Connection connection=dataSource.getConnection()){
-			try(PreparedStatement statement=connection.prepareStatement("DELETE FROM person WHERE phone_number=?")){
-				statement.setString(1, deletedPerson.getPhone_number());
+			try(PreparedStatement statement=connection.prepareStatement("DELETE FROM person WHERE idperson=?")){
+				statement.setInt(1, idPerson);
 				statement.executeUpdate();
 			}
 		}

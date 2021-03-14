@@ -74,17 +74,24 @@ public class PersonDaoTestCase {
 	@Test
 	public void shouldDeletePerson() throws Exception{
 		//GIVEN
-		Person personToAddedAndDeleted=new Person("MARTIN","Paul","Popo","9549696","adresse de paul","paul.martin@gmail.com",LocalDate.of(1976,12,5));
-		//WHEN
 		personDao.addPerson("MARTIN","Paul","Popo","9549696","adresse de paul","paul.martin@gmail.com",LocalDate.of(1976,12,5));
-		personDao.deletePerson(personToAddedAndDeleted);
-		//THEN
+		
+		//WHEN
 		Connection connection=DataSourceFactory.getDataSource().getConnection();
 		Statement statement=connection.createStatement();
-		ResultSet resultSet=statement.executeQuery("SELECT * FROM person WHERE phone_number=9549696");
-		assertThat(resultSet.next()).isFalse();
+		ResultSet resultSet= statement.executeQuery("SELECT * FROM person WHERE phone_number=9549696");
+		Integer idPerson = resultSet.getInt("idperson");
 		resultSet.close(); 
 	    statement.close();
+	    
+		PersonDao.deletePerson(idPerson);
+		//THEN
+		Statement statement2=connection.createStatement();
+		ResultSet resultSet2=statement2.executeQuery("SELECT * FROM person WHERE idperson= " + idPerson.toString());
+		
+		assertThat(resultSet2.next()).isFalse();
+		resultSet2.close(); 
+	    statement2.close();
 		connection.close();
 	}
 	
